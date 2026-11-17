@@ -1,0 +1,5 @@
+# Used ONLY by the SIMULATE_VULNERABILITY pipeline parameter to prove that
+# Trivy blocks the deployment. Django 2.2.0 carries several known CRITICAL CVEs.
+Flask==3.1.2
+gunicorn==23.0.0
+Django==2.2.0

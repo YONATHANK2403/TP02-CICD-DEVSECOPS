@@ -1,0 +1,12 @@
+# Secrets - NEVER commit these
+.env
+.vault_pass
+*.vault_pass
+
+# Build / CI output
+reports/*
+!reports/.gitkeep
+__pycache__/
+.pytest_cache/
+.coverage
+*.retry

@@ -1,0 +1,28 @@
+# Core pipeline
+workflow-aggregator
+pipeline-stage-view
+pipeline-utility-steps
+timestamper
+ansicolor
+build-timeout
+ws-cleanup
+# Git / GitHub
+git
+github
+# Credentials
+credentials
+credentials-binding
+plain-credentials
+ssh-credentials
+# Quality / security
+sonar
+ansible
+# Docker
+docker-workflow
+docker-commons
+# Reports and notifications
+junit
+htmlpublisher
+mailer
+email-ext
+slack

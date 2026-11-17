@@ -1,0 +1,7 @@
+[run]
+source = .
+relative_files = True
+branch = True
+
+[report]
+include = app/demo_app/*

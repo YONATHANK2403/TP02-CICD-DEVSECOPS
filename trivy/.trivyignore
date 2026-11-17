@@ -1,0 +1,3 @@
+# Accepted risks. One entry per line, ALWAYS with a justification and an expiry date:
+#   CVE-2024-12345 exp:2026-12-31
+# Nothing is ignored by default.
