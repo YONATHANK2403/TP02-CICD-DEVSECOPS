@@ -20,7 +20,7 @@ pipeline {
     parameters {
         booleanParam(name: 'SIMULATE_VULNERABILITY', defaultValue: false,
                      description: 'Build the image with a known vulnerable dependency to prove that Trivy blocks the deployment')
-        booleanParam(name: 'REQUIRE_APPROVAL', defaultValue: false,
+        booleanParam(name: 'REQUIRE_APPROVAL', defaultValue: true,
                      description: 'Ask for a manual approval before the production deployment')
     }
 

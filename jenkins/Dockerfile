@@ -6,7 +6,9 @@ ARG DOCKER_CLI_VERSION=27.5.1
 
 USER root
 
-RUN apt-get update \
+RUN find /etc/apt -type f \( -name '*.sources' -o -name 'sources.list' \) \
+        -exec sed -i 's|http://deb.debian.org|https://deb.debian.org|g' {} + \
+    && apt-get update \
     && apt-get install -y --no-install-recommends curl unzip ca-certificates jq python3 python3-venv python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
