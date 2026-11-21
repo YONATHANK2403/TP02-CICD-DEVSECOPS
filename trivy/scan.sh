@@ -15,17 +15,18 @@ REPORT_DIR="${REPORT_DIR:-reports/trivy}"
 BLOCK_SEVERITIES="${BLOCK_SEVERITIES:-CRITICAL}"
 WARN_SEVERITIES="${WARN_SEVERITIES:-HIGH}"
 IGNORE_UNFIXED="${IGNORE_UNFIXED:-true}"
+TRIVY_TIMEOUT="${TRIVY_TIMEOUT:-30m}"
 IGNORE_FILE="${IGNORE_FILE:-trivy/.trivyignore}"
 HTML_TEMPLATE="${HTML_TEMPLATE:-/opt/trivy/templates/html.tpl}"
 JSON="${REPORT_DIR}/trivy-report.json"
 
 mkdir -p "${REPORT_DIR}"
 
-common_args=(--scanners "vuln,secret" --timeout 10m --severity "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL")
+common_args=(--scanners "vuln,secret" --timeout "${TRIVY_TIMEOUT}" --severity "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL")
 [ "${IGNORE_UNFIXED}" = "true" ] && common_args+=(--ignore-unfixed)
 [ -f "${IGNORE_FILE}" ] && common_args+=(--ignorefile "${IGNORE_FILE}")
 
-echo "==> Trivy scan of ${IMAGE} (block: ${BLOCK_SEVERITIES} | warn: ${WARN_SEVERITIES} | ignore-unfixed: ${IGNORE_UNFIXED})"
+echo "==> Trivy scan of ${IMAGE} (block: ${BLOCK_SEVERITIES} | warn: ${WARN_SEVERITIES} | ignore-unfixed: ${IGNORE_UNFIXED} | timeout: ${TRIVY_TIMEOUT})"
 
 # 1. Full machine-readable report (also the source of truth for the gate)
 if ! trivy image "${common_args[@]}" --format json --output "${JSON}" "${IMAGE}"; then
